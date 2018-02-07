@@ -1,28 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#define MAX 80
 char *getCharBlock(int *size){
   int index=0;
   char *p;
   char item;
-  p=(char*) malloc(100*sizeof(char));
+  p=(char*) malloc(MAX*sizeof(char));
   //do i need to assign exact num of places to char
+    printf("Enter a line here!\n");
   while (1){
-    printf("Enter an char only!(enter Z to stop)\n");
-    scanf("%s",&item);
 
-      if(item<'A'||item>'Z'){
-      fprintf(stderr, "Error! Not an char\n" );
-      exit(EXIT_FAILURE);
-    }
-    if (item=='Z'){
+    item=getchar();
+    if(item=='\n'){
       break;
     }
+
     *(p+index)=item;
     index++;
   }
   *size=index;
+  *(p+index)='\0';
   return p;
+
 }
 //此function应该返回包含char内容的 地址合集
 //////////////////////////////////////////////////////////////////
@@ -38,7 +37,7 @@ int findMatch(char *text,int sizeText, char *pattern, int sizePattern){
             break;
           }
         }
-        
+
     }
     if(i2==sizePattern){
       result= 1;
@@ -50,6 +49,7 @@ int findMatch(char *text,int sizeText, char *pattern, int sizePattern){
     }
     return result;
 }
+
 
 
 void printIt(char *ptr, int size){//why do we need index here?
@@ -78,78 +78,3 @@ findMatch(text,size,pattern,size1);
 //int findMatch(char *text,int sizeText, char *pattern, int sizePattern)
 
 }
-
-
-//////////////////////////////////////////////////////////////////
-/*int findMatch(char *text,int sizeText){
-  //could not find a generic way to rule out patterns
-int initialState, state1, state2, state3,finalState;
-initialState=0;
-state1=1;
-state2=2;
-state3=3;
-finalState=4;
-
-int *currentState;
-char *currentChar;
-int index=0;
-*currentState=initialState;
- for (index=0; index<sizeText; index++) {
-   *currentChar= *(text+index);//find current char with index;
-   if (*currentState==0){
-     if (*currentChar=='G'){
-       *currentState=1;
-     }
-     else if (*currentChar=='A'){
-       *currentState=0;
-     }
-     else if (*currentChar=='C'){
-       *currentState=0;
-     }
-   }
-
-   else if (*currentState==1){
-     if (*currentChar=='C'){
-       *currentState=2;}
-     else if (*currentChar=='G'){
-       *currentState=1;
-      }
-      else if (*currentChar=='A'){
-        *currentState=0;
-       }
-     }
-
-     else if (*currentState==2){
-       if (*currentChar=='C'){
-         *currentState=0;}
-       else if (*currentChar=='G'){
-         *currentState=1;
-        }
-        else if (*currentChar=='A'){
-          *currentState=3;
-         }
-       }
-
-       else if (*currentState==3){
-         if (*currentChar=='C'){
-           *currentState=0;}
-         else if (*currentChar=='G'){
-           *currentState=4;
-          }
-          else if (*currentChar=='A'){
-            *currentState=0;
-           }
-         }
-//FSM ends here
-   }
-   if (*currentState==4){
-     printf("find it!\n" );
-   }
-   else {
-    printf("We do not find it.\n" );
-   }
-   return 0;
-
- }*/
-//0 means no, 1 means yes!
-//////////////////////////////////////////////////////////////////
