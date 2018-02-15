@@ -5,6 +5,7 @@ char *getCharBlock(int *size){
   int index=0;
   char *p;
   char item;
+  /////////////////////////////////////////// this part is adjusted and uses realloc to assign momery space
   p=(char*) malloc(sizeof(char));
     printf("Enter a line here!\n");
       item=getchar();
@@ -16,15 +17,12 @@ char *getCharBlock(int *size){
       item=getchar();}
 
     *(p+index)='\0';
-
-
     *size=index;
       return p;
 
   }
 
   //this while function need to be adjusted
-
 
 //////////////////////////////////////////////////////////////////
 
