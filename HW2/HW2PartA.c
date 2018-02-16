@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 80
 char *getCharBlock(int *size){
   int index=0;
   char *p;
@@ -10,10 +9,10 @@ char *getCharBlock(int *size){
     printf("Enter a line here!\n");
       item=getchar();
     //start here
-  while (item!='\n'&& index<MAX){
+  while (item!='\n'){
       *(p+index)=item;
       index++;
-      p=(char*)realloc(p,index+1);
+      p=(char*)realloc(p,sizeof(char)*(index+1));
       item=getchar();}
 
     *(p+index)='\0';
@@ -29,12 +28,17 @@ char *getCharBlock(int *size){
 int findMatch(char *text,int sizeText, char *pattern, int sizePattern){
     int i1;
     int i2=0;
+    int count=0;
     int result;
     for(i1=0;i1<sizeText;i1++){
         if(*(text+i1)==*(pattern+i2)){
           i2++;
           if(i2==sizePattern){
-            break;
+            count++;
+            i2=0;
+            if(*(text+i1)==*(pattern+i2)){
+              i2++;
+            }
           }
         }
         else if (*(text+i1)!=*(pattern+i2)){
@@ -44,17 +48,11 @@ int findMatch(char *text,int sizeText, char *pattern, int sizePattern){
           }
         }
     }
-    if(i2==sizePattern){
-      result= 1;
-      printf("YES, we DO find the pattern\n" );
-    }
-    else {
-      result= 0;
-      printf("NO, we DON'T find the pattern\n" );
-    }
+
+      printf("There are %d patterns\n", count);
+
     return result;
 }
-
 
 void printIt(char *ptr, int size){//why do we need index here?
   int i;
@@ -83,3 +81,4 @@ findMatch(text,size,pattern,size1);
 free(text);
 free(pattern);
 }
+
