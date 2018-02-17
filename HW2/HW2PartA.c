@@ -26,6 +26,7 @@ char *getCharBlock(int *size){
 //////////////////////////////////////////////////////////////////
 
 int findMatch(char *text,int sizeText, char *pattern, int sizePattern){
+  //text， text size, pattern, pattern size
     int i1;
     int i2=0;
     int count=0;
@@ -35,10 +36,8 @@ int findMatch(char *text,int sizeText, char *pattern, int sizePattern){
           i2++;
           if(i2==sizePattern){
             count++;
+            i1=i1-i2+1;
             i2=0;
-            if(*(text+i1)==*(pattern+i2)){
-              i2++;
-            }
           }
         }
         else if (*(text+i1)!=*(pattern+i2)){
@@ -48,12 +47,11 @@ int findMatch(char *text,int sizeText, char *pattern, int sizePattern){
           }
         }
     }
-
       printf("There are %d patterns\n", count);
 
     return result;
 }
-
+///////////////////////////////////////////////////////////////
 void printIt(char *ptr, int size){//why do we need index here?
   int i;
   for(i=0;i<size;i++){
@@ -77,8 +75,8 @@ printf("the PATTERN char is\n");
 printIt(pattern,size1);
 printf("So, let's see if we can find the pattern: \t" );
 findMatch(text,size,pattern,size1);
+
 //int findMatch(char *text,int sizeText, char *pattern, int sizePattern)
 free(text);
 free(pattern);
 }
-
