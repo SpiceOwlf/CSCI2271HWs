@@ -1,7 +1,0 @@
-
-this is not done yet
-
-countFreq.h is a problem, 现在还没写好， 其他的文件通过了gcc 测试，应该是可以用的
-如果出了问题，极有可能是指针和memory space的锅
-垃圾C
-high hail python
