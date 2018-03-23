@@ -7,7 +7,7 @@ typedef struct word{
        struct word *next;
 }word_t;
 
-char *get_string(int *record_num);
+word_t *get_string();
 word_t *create_block(char *target);
 void print_single_block(word_t *target);
 word_t *insert_block(word_t *old_block, word_t *new_block);
