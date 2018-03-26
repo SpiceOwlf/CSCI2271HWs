@@ -64,6 +64,7 @@ node_t *search_next_color(node_t *square,char *color){
 
   char *random_color_generate(){
     char *local_color;
+    srand((unsigned)time(NULL));
     local_color=num_to_color(randomNumber(4));
     return local_color;
 
