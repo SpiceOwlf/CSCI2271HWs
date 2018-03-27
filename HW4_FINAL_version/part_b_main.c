@@ -19,7 +19,7 @@ int main(int argc, char const *argv[]) {
   node_t *TAIL =main_d_list->lastNode;;
 
 
-//  displayList_front_to_behind(main_d_list,print_square );
+  displayList_front_to_behind(main_d_list,print_square );
   printf("waiting....\n" );
    srand((unsigned)time(NULL));
 
