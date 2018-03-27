@@ -9,7 +9,10 @@ for part B, the way to compile it:
      gcc -o hwhw part_b_main.c part_b_main_support_2.c LinkedList.c board.c
      ./hwhw
     
-then, the result will appear in the terminal, which includes the color "player" went through and how many steps he takes
+then, the result will appear in the terminal, which includes:
+"the board" we read in;
+the color "player" went through;
+how many steps he takes;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 for part C, the way to complie it:
